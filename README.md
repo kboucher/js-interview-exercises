@@ -11,7 +11,7 @@ This project includes predefined JavaScript function definitions and accompanyin
 
 ## Install
 
-* `git clone [repo_address_here]`
+* `git clone https://stash.identitymgmt.net/scm/ri/js-interview-exercises.git`
 * `cd js-interview-exercises`
 * `npm install`
 
@@ -26,3 +26,9 @@ It is helpful to arrange your desktop with the code editor and tests page side-b
 ### Example Desktop Layout
 
 ![alt Example desktop setup](documentation/images/screenshot_environment.png "Example desktop setup")
+
+## Resources
+
+* [Browsersync documentation](https://www.browsersync.io/docs)
+* [Qunit documentation](https://api.qunitjs.com/)
+* [Mozilla Developer Network JavaScript documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
