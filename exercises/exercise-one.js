@@ -50,6 +50,23 @@ function getAreaOfCircle(radius) {
 }
 
 /**
+    In mathematics, the Fibonacci numbers, commonly denoted Fn form a sequence,
+    called the Fibonacci sequence, such that each number is the sum of the two
+    preceding ones, starting from 0 and 1.
+
+    Write a function that accepts the `count` of fibonacci numbers to be returned,
+    and returns an array with that many fibonacci numbers in sequence.
+
+    @method fibonacci
+    @param {Number} count
+    @returns {Array} Array of `n` numbers of the fibonacci sequence
+ */
+function fibonacci(count) {
+    // Write code here
+
+}
+
+/**
     In mathematics, the factorial of a positive integer _n_, denoted by _n!, is
     the product of all positive integers less than or equal to _n_.
 

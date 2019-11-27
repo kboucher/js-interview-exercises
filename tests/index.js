@@ -94,6 +94,65 @@ QUnit.test('Can copy object.', function(assert) {
     );
 });
 
+QUnit.test('Can print the fibonacci sequence', function(assert) {
+    const fibNeg1 = fibonacci(-1);
+    const fib0 = fibonacci(0);
+    const fib1 = fibonacci(1);
+    const fib2 = fibonacci(2);
+    const fib3 = fibonacci(3);
+    const fib5 = fibonacci(5);
+    const fib8 = fibonacci(8);
+    const fib13 = fibonacci(13);
+
+    assert.strictEqual(
+        fibNeg1.join(','),
+        '',
+        'Less than one number of the fibonacci sequence is nothing'
+    );
+
+    assert.strictEqual(
+        fib0.join(','),
+        '',
+        'Less than one number of the fibonacci sequence is nothing'
+    );
+
+    assert.strictEqual(
+        fib1.join(','),
+        '0',
+        'The first fibonacci number is zero'
+    );
+
+    assert.strictEqual(
+        fib2.join(','),
+        '0,1',
+        'The first two fibonacci numbers are 0, 1'
+    );
+
+    assert.strictEqual(
+        fib3.join(','),
+        '0,1,1',
+        'The first three fibonacci numbers are 0, 1, 1'
+    );
+
+    assert.strictEqual(
+        fib5.join(','),
+        '0,1,1,2,3',
+        'The first five fibonacci numbers are 0, 1, 1, 2, 3'
+    );
+
+    assert.strictEqual(
+        fib8.join(','),
+        '0,1,1,2,3,5,8,13',
+        'The first eight fibonacci numbers are 0, 1, 1, 2, 3, 5, 8, 13'
+    );
+
+    assert.strictEqual(
+        fib13.join(','),
+        '0,1,1,2,3,5,8,13,21,34,55,89,144',
+        'The first thirteen fibonacci numbers are 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144'
+    );
+});
+
 QUnit.test('Can create factorial function.', function(assert) {
     const factorial0 = factorial(0);
     const factorial1 = factorial(1);
