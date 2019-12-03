@@ -1,5 +1,27 @@
 QUnit.test('Can copy array.', function(assert) {
     const arrayToCopy = [1, 2, 3, 4, 5];
+    const copiedArray = copyArray(arrayToCopy);
+
+    assert.ok(
+        Array.isArray(copiedArray),
+        '`copiedArray` should be an array'
+    );
+
+    assert.deepEqual(
+        copiedArray,
+        [1, 2, 3, 4, 5],
+        '`copiedArray` should equal [1, 2, 3, 4, 5]'
+    );
+
+    assert.notStrictEqual(
+        arrayToCopy,
+        copiedArray,
+        '`copiedArray` should not equal `arrayToCopy`'
+    );
+});
+
+QUnit.test('Can copy array and double its values.', function(assert) {
+    const arrayToCopy = [1, 2, 3, 4, 5];
     const copiedArray = copyAndDoubleArray(arrayToCopy);
 
     assert.ok(
@@ -17,6 +39,35 @@ QUnit.test('Can copy array.', function(assert) {
         arrayToCopy,
         [1, 2, 3, 4, 5],
         '`arrayToCopy` should still equal [1, 2, 3, 4, 5]'
+    );
+});
+
+QUnit.test('Can copy an object and double its values.', function(assert) {
+    const objectToCopy = {
+        one: 1,
+        two: 2,
+        three: 3,
+        four: 4,
+        five: 5,
+    };
+    const copiedObject = copyAndDoubleObject(objectToCopy);
+
+    assert.equal(
+        Object.prototype.toString.call(copiedObject),
+        '[object Object]',
+        '`copiedObject` should be an object'
+    );
+
+    assert.deepEqual(
+        Object.entries(copiedObject).map(item => item[1]),
+        [2, 4, 6, 8, 10],
+        '`copiedObject` values should equal [2, 4, 6, 8, 10]'
+    );
+
+    assert.deepEqual(
+        Object.entries(objectToCopy).map(item => item[1]),
+        [1, 2, 3, 4, 5],
+        '`objectToCopy` values should still equal [1, 2, 3, 4, 5]'
     );
 });
 
@@ -65,36 +116,46 @@ QUnit.test('Can get the second largest number in a collection.', function(assert
     );
 });
 
-QUnit.test('Can copy object.', function(assert) {
-    const objectToCopy = {
-        one: 1,
-        two: 2,
-        three: 3,
-        four: 4,
-        five: 5,
-    };
-    const copiedObject = copyAndDoubleObject(objectToCopy);
+QUnit.test('Can calculate the area of a circle.', function(assert) {
+    const areaRadius0 = getAreaOfCircle(0);
+    const areaRadiusNaught = getAreaOfCircle();
+    const areaRadius12 = getAreaOfCircle(12);
+    const areaRadius12Str = getAreaOfCircle('12');
+    const areaRadius12Word = getAreaOfCircle('twelve');
 
-    assert.equal(
-        Object.prototype.toString.call(copiedObject),
-        '[object Object]',
-        '`copiedObject` should be an object'
+    assert.strictEqual(
+        areaRadius12,
+        452.39,
+        'The area of a circle with a radius of 12 is 452.39'
     );
 
-    assert.deepEqual(
-        Object.entries(copiedObject).map(item => item[1]),
-        [2, 4, 6, 8, 10],
-        '`copiedObject` values should equal [2, 4, 6, 8, 10]'
+    assert.strictEqual(
+        areaRadius12Str,
+        452.39,
+        'The area of a circle with a radius of 12 (passed as a string) is 452.39'
     );
 
-    assert.deepEqual(
-        Object.entries(objectToCopy).map(item => item[1]),
-        [1, 2, 3, 4, 5],
-        '`objectToCopy` values should still equal [1, 2, 3, 4, 5]'
+    assert.strictEqual(
+        areaRadius0,
+        0,
+        'The area of a circle with a radius of 0 is 0'
+    );
+
+    assert.strictEqual(
+        areaRadiusNaught,
+        undefined,
+        'The area of a circle with no radius is undefined'
+    );
+
+    assert.strictEqual(
+        areaRadius12Word,
+        undefined,
+        'The area of a circle with a radius of "twelve" is undefined'
     );
 });
 
 QUnit.test('Can print the fibonacci sequence', function(assert) {
+    const fibNaught = fibonacci();
     const fibNeg1 = fibonacci(-1);
     const fib0 = fibonacci(0);
     const fib1 = fibonacci(1);
@@ -103,12 +164,6 @@ QUnit.test('Can print the fibonacci sequence', function(assert) {
     const fib5 = fibonacci(5);
     const fib8 = fibonacci(8);
     const fib13 = fibonacci(13);
-
-    assert.strictEqual(
-        fibNeg1.join(','),
-        '',
-        'Less than one number of the fibonacci sequence is nothing'
-    );
 
     assert.strictEqual(
         fib0.join(','),
@@ -149,6 +204,18 @@ QUnit.test('Can print the fibonacci sequence', function(assert) {
     assert.strictEqual(
         fib13.join(','),
         '0,1,1,2,3,5,8,13,21,34,55,89,144',
+        'The first thirteen fibonacci numbers are 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144'
+    );
+
+    assert.strictEqual(
+        fibNeg1.join(','),
+        '',
+        'Less than one number of the fibonacci sequence is nothing'
+    );
+
+    assert.strictEqual(
+        fibNaught.join(','),
+        '',
         'The first thirteen fibonacci numbers are 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144'
     );
 });
@@ -202,23 +269,5 @@ QUnit.test('Can create factorial function.', function(assert) {
         factorial10,
         3628800,
         '10! should equal 3628800'
-    );
-});
-
-QUnit.test('Can calculate the area of a circle.', function(assert) {
-    const areaRadius12 = getAreaOfCircle(12);
-    // const areaNaught = getAreaOfCircle();
-    const areaRadius12Str = getAreaOfCircle('12');
-
-    assert.strictEqual(
-        areaRadius12,
-        452.39,
-        'The area of a circle with a radius of 12 is 452.39'
-    );
-
-    assert.strictEqual(
-        areaRadius12Str,
-        452.39,
-        'The area of a circle with a radius of 12 (passed as a string) is 452.39'
     );
 });

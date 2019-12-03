@@ -6,8 +6,7 @@
     @returns {Array} Copy of `array`
  */
 function copyArray(array) {
-    // Write code here
-
+    return array.slice();
 }
 
 /**
@@ -25,8 +24,7 @@ function copyArray(array) {
     @returns {Array} Copy of `array` with each item multiplied by two
  */
 function copyAndDoubleArray(array) {
-    // Write code here
-
+    return array.map(item => item * 2);
 }
 
 /**
@@ -43,8 +41,11 @@ function copyAndDoubleArray(array) {
     @returns {Object} Copy of `obj` with each property value multiplied by two
  */
 function copyAndDoubleObject(obj) {
-    // Write code here
+    const copy = Object.assign({}, obj);
 
+    Object.keys(copy).forEach(item => copy[item] *= 2)
+
+    return copy;
 }
 
 /**
@@ -59,8 +60,13 @@ function copyAndDoubleObject(obj) {
     @returns {Number} The second largest number in the array `numbers`
  */
 function getSecondLargest(numbers) {
-    // Write code here
+    if (!Array.isArray(numbers)) {
+        return undefined;
+    }
 
+    return numbers
+      .sort((a, b) => b - a)
+      .filter(item => numbers[0] !== item)[0];
 }
 
 /**
@@ -75,8 +81,13 @@ function getSecondLargest(numbers) {
     @returns {Number} Approximate area of a circle
  */
 function getAreaOfCircle(radius) {
-    // Write code here
+    if (isNaN(radius)) {
+        return undefined;
+    }
 
+    return Number(
+        (Math.pow(radius, 2) * Math.PI).toFixed(2)
+    );
 }
 
 /**
@@ -92,8 +103,23 @@ function getAreaOfCircle(radius) {
     @returns {Array} Array of `n` numbers of the fibonacci sequence
  */
 function fibonacci(count) {
-    // Write code here
+    let a = 0;
+    let b = 1;
+    let c;
 
+    if (!count || count < 1) return [];
+    if (count === 1) return [a];
+
+    let fibonacciNumbers = [a, b];
+
+    for (let i = 2; i < count; i++) {
+        c = a + b;
+        fibonacciNumbers.push(c);
+        a = b;
+        b = c;
+    }
+
+    return fibonacciNumbers;
 }
 
 /**
@@ -111,6 +137,9 @@ function fibonacci(count) {
     @returns {Number}
  */
 function factorial(n) {
-    // Write code here
+    if (n > 1) {
+        return n * factorial(n - 1);
+    }
 
+    return 1;
 }
