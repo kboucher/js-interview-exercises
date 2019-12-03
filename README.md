@@ -11,7 +11,7 @@ This project includes predefined JavaScript function definitions and accompanyin
 
 ## Install
 
-* `git clone https://stash.identitymgmt.net/scm/ri/js-interview-exercises.git`
+* `git clone https://github.com/kboucher/js-interview-exercises.git`
 * `cd js-interview-exercises`
 * `npm install`
 
