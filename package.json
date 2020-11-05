@@ -4,7 +4,7 @@
     "description": "A set of JavaSript exercises (with accompanying unit tests) to be completed during a JavaScript developer interview.",
     "scripts": {
         "test": "./node_modules/.bin/qunit tests/index.js",
-        "start": "./node_modules/.bin/browser-sync start -s -f . --no-notify --host 127.0.0.1 --port 9000 --startPath 'tests/index.html' ./"
+        "start": "./node_modules/.bin/browser-sync start -s -f . --no-notify --host 127.0.0.1 --port 9000 --startPath tests/index.html ./"
     },
     "author": "Kevin Boucher <kevin@kevinboucher.com>",
     "license": "ISC",
