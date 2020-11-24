@@ -6,7 +6,7 @@
     @returns {Array} Copy of `array`
  */
 function copyArray(array) {
-    return array.slice();
+    return [...array];
 }
 
 /**
@@ -41,7 +41,7 @@ function copyAndDoubleArray(array) {
     @returns {Object} Copy of `obj` with each property value multiplied by two
  */
 function copyAndDoubleObject(obj) {
-    const copy = Object.assign({}, obj);
+    const copy = {...obj};
 
     Object.keys(copy).forEach(item => copy[item] *= 2)
 
@@ -86,7 +86,7 @@ function getAreaOfCircle(radius) {
     }
 
     return Number(
-        (Math.pow(radius, 2) * Math.PI).toFixed(2)
+        (Math.PI * radius ** 2).toFixed(2)
     );
 }
 
